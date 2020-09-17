@@ -24,3 +24,38 @@
 - Higher order functions
 - Functional Javascript constructs
 - Currying and partial evaluation
+
+## Advantages and disadvantages
+
+### Advantages
+
+- Testability
+- Easy maintenance
+- Reusable building blocks
+- Parallel execution
+
+### Disadvantages
+
+- Rigor vs Understandability
+- Use of a subset of Javascript
+- Performance
+  - Memoization
+  - Tail call optimization
+  - Lazy evaluation
+
+## Deep and Shallow Cloning
+
+- Shallow cloning
+
+  - Using spread operator
+  - Only copy top level values and references
+  - Prevent mutability using `Object.assign({}, target, source)`
+  - Performance over robustness
+
+- Deep cloning
+  - Copies all deep values and references
+  - We need an intermediate parser `const deepClone = o => JSON.parse(Json.stringify(o));`
+  - Robustness over performance
+
+# Context Binding
+
