@@ -57,5 +57,12 @@
   - We need an intermediate parser `const deepClone = o => JSON.parse(Json.stringify(o));`
   - Robustness over performance
 
-# Context Binding
+## Context Binding
 
+- Properly access and mutate the internal state of an object
+
+## Chaining and Function composition
+
+- composing vs sequence
+  - `compose(f,g)(x) = f(g(x))`
+  - `sequence(f,g)(x) = g(f(x))`
