@@ -12,5 +12,17 @@ const down = (elevator) => {
   };
 };
 
+const sequence2 =
+  (f1, f2) =>
+  (...args) =>
+    f2(f1(...args));
+
+const sequence = (f1, ...fRest) => fRest.reduce(sequence2, f1);
+
 const newFloor = up(down(up(up(elevator)))).floor;
 console.log(newFloor);
+
+const move = sequence(up, up, down, up);
+const newElevator = move(elevator);
+
+console.log(newElevator.floor);
