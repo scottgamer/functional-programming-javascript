@@ -63,6 +63,23 @@
 
 ## Chaining and Function composition
 
+- chaining comes from the OO world
+- concatenates function calls
+
+```javascript
+["Functional", "programming", "is", "cool"]
+  .map((word) => word.length)
+  .filter((num) => num % 2 === 0)
+  .reduce((a, b) => a + b, 0);
+```
+
 - composing vs sequence
+
   - `compose(f,g)(x) = f(g(x))`
   - `sequence(f,g)(x) = g(f(x))`
+  - `sequence(f,g)(...args) = g(f(...args))`
+
+  - `sequence(f1, f2)(x) === f2(f1(x))`
+
+- function composition can help solve the issue of reading function calls as a sequence
+- the `sequence` is just syntactic sugar for composing functions
