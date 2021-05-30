@@ -83,3 +83,17 @@
 
 - function composition can help solve the issue of reading function calls as a sequence
 - the `sequence` is just syntactic sugar for composing functions
+
+## Higher Order Functions HOCs
+
+- Functions can be passed as values
+- Functions can return other functions
+
+### Array HOCs
+
+- **map:** transforms each element of an array and returns a new array of transformed values
+- **filter:** iterates on all elements of an array, returns a new array with elements for which the function passed to filter yields a truthy value
+- **reduce:** applies cb function on each element of an array one by one, accumulating a final return value
+  - cb (prev, value): newValue
+  - array.reduce(cb, initialValue)
+- concat
