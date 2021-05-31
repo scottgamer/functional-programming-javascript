@@ -89,7 +89,7 @@
 - Functions can be passed as values
 - Functions can return other functions
 
-### Array HOCs
+### Array HOF's
 
 - **map:** transforms each element of an array and returns a new array of transformed values
 - **filter:** iterates on all elements of an array, returns a new array with elements for which the function passed to filter yields a truthy value
@@ -97,3 +97,22 @@
   - cb (prev, value): newValue
   - array.reduce(cb, initialValue)
 - concat
+
+## Currying
+
+### Arity
+
+The number of arguments of a function
+
+- f(a): unary function (arity=1)
+- f(a,b): binary function (arity=2)
+- f(a,b,c): ternary function (arity=3)
+
+- f.length equals the arity of f
+- exceptions apply:
+
+  - rest parameters
+  - default arguments
+
+- functions with variable number of arguments are called **variadic functions**
+- f(...args)
