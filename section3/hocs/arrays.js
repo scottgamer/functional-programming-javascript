@@ -47,6 +47,14 @@ const filter = ([head, ...tail], predicate) =>
     ? [head, ...filter(tail, predicate)]
     : filter(tail, predicate);
 
+// custom filter using reduce
+const filterWithReduce = (array, filterFunction) => {
+  const reducer = (acc, element) =>
+    filterFunction(element) ? [...acc, element] : acc;
+
+  return array.reduce(reducer, []);
+};
+
 const square = (x) => x ** 2;
 
 console.log(map([1, 2, 3, 4], square));
