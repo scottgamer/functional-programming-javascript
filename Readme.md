@@ -98,7 +98,7 @@
   - array.reduce(cb, initialValue)
 - concat
 
-## Currying
+## Currying - Definitions
 
 ### Arity
 
@@ -116,3 +116,15 @@ The number of arguments of a function
 
 - functions with variable number of arguments are called **variadic functions**
 - f(...args)
+
+### Currying
+
+- Transforms a function with multiple args to a chain of function applications with one argument each
+
+`f = (a,b) => value` becomes `f = a => (b => value)`
+
+- This can also be written as: `f = a => b => value`
+- **Note:** the arity of a curry function must be always 1
+- Benefits:
+  - Shortens the argument list
+  - Makes WET code DRY by factoring out common code
