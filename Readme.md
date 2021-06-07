@@ -128,3 +128,40 @@ The number of arguments of a function
 - Benefits:
   - Shortens the argument list
   - Makes WET code DRY by factoring out common code
+
+### Partial Application
+
+- Process of fixing any number of args to reduce its arity
+  `f = (x,y,z,u) => value` becomes `f_ab = (z,u) => value`
+- Difference with **Currying**
+
+  - Curry creates a chain of unary functions
+  - curry(f) accepts one argument
+  - curry(f) does not bind any argument
+
+  - Partial application operates with functions of any arity
+  - partial(f, ..args) accepts a variable number of args
+  - partial(f, ...args) bind values in the args array to the args of f
+
+```javascript
+const volume = (a, b, c) => a * b * c;
+volume(2, 3, 4); // 24
+
+// using lodash
+const curriedVolume = _.curry(volume);
+curriedVolume(2)(3)(4); // 24
+
+const partialVolume_2_3 = _.partial(volume, 2, 3);
+partialVolume_2_3(4); // 24
+```
+
+- partial application can be used with `bind`
+
+```javascript
+const volume = (a, b, c) => a * b * c;
+
+// the context in this case is null
+volume.bind(null, 2, 3)(4); // 24
+
+volume.bind(null, 2)(3, 4); // 24
+```
