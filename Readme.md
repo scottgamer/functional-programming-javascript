@@ -192,3 +192,23 @@ const factorial = (num) => (num <= 1 ? 1 : num * factorial(num - 1));
 - direct vs indirect recursion
 - direct: the function calls itself directly
 - indirect: the function calls another function which then calls the initial function
+
+## Memoization
+
+- Deterministic functions: argument values determine the return value
+- Build a lookup table:
+  - key: argument list
+  - value: return value
+- if the key is in the lookup table, return the corresponding value without executing the function
+- otherwise, execute the function
+
+```javascript
+const memo = (f) => {
+  let memoMap = new Map();
+
+  return (fArg) =>
+    memoMap.has(fArg)
+      ? memoMap.get(fArg)
+      : memoMap.set(fArg, f(fArg)).get(fArg);
+};
+```
