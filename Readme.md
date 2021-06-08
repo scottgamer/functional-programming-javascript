@@ -165,3 +165,30 @@ volume.bind(null, 2, 3)(4); // 24
 
 volume.bind(null, 2)(3, 4); // 24
 ```
+
+## Recursive and Iterative solutions
+
+### Recursion
+
+- Mathematics: definition of a concept in terms of itself
+- factorial
+  - 0! is 1 (terminal condition)
+  - n! is n \* (n-1)!
+- Software development: a function that calls itself
+
+```javascript
+const factorial = (num) => (num <= 1 ? 1 : num * factorial(num - 1));
+```
+
+- Efficiency-wise, iterative solutions tend to be better
+- For each function application, a new stack frame is created in memory
+
+### Types of recursion
+
+- single vs multiple recursion
+- single: a function refers to itself once
+- multiple: a function refers to itself multiple times
+
+- direct vs indirect recursion
+- direct: the function calls itself directly
+- indirect: the function calls another function which then calls the initial function
