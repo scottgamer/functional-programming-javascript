@@ -84,6 +84,17 @@
 - function composition can help solve the issue of reading function calls as a sequence
 - the `sequence` is just syntactic sugar for composing functions
 
+### Function composition
+
+```javascript
+const compose = (f, g) => (x) => f(g(x));
+const double = (x) => 2 * x;
+const plusOne = (x) => x + 1;
+
+compose(double, plusOne)(5); // 12
+double(plusOne(5)); // 12
+```
+
 ## Higher Order Functions HOCs
 
 - Functions can be passed as values
@@ -212,3 +223,64 @@ const memo = (f) => {
       : memoMap.set(fArg, f(fArg)).get(fArg);
 };
 ```
+
+## Category theory
+
+- A set of javascript values
+  - Booleans (false, true)
+  - Lamp states ("red", "yellow", "green")
+- A set of morphisms (functions) defined on these values
+- Morphisms are described by pure functions
+
+### Properties of categories
+
+- identity transformation
+  `const identity = x => x`
+- associativity
+  `compose(compose(f,g), h) = compose(f, compose(g,h))`
+
+## Functors
+
+- mappings between categories
+- example: map function of arrays
+- arrays implementing the map function are functors
+- containers - arrays
+- morphism - square function
+
+```javascript
+[1, 2, 3, 4].map((x) => x * x); // [1,4,9,16]
+// [1,2,3,4] and [1,4,9,16] are functors
+```
+
+- functors are contained with a map method
+- the morphed values are placed in a new container
+- **the new and old containers match in structure**
+
+### Type signature of functors
+
+```javascript
+(a=>b) => (fa => fb)
+// where
+// a: original type
+// b: morphed type
+// f: container // array
+```
+
+## Monads
+
+- are container just like functors
+- can be objects, arrays, and even functions
+- containers that implement:
+  - a unit method: unit(value): monad
+  - a **flatMap** method
+
+### Axioms of monads
+
+- flatMap(monad, unit) = monad
+- flatMap(unit(value), f) = f(value)
+- flatMap(flatMap(monad, f), g) = flatMap(monad, value => flatMap(f(value), g))
+
+- Is Jquery a monad?
+  - wrapped sets
+  - ajax calls
+  - promises
